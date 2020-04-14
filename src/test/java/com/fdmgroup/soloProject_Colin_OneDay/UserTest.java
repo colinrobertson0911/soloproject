@@ -61,7 +61,7 @@ class UserTest {
 		assertNotEquals(stockBefore, stockAfter);
 
 	}
-	
+
 	@Test
 	public void test_ThatAnItemCannotBeBought_IfNotEnoughStockAvailable() {
 		int stockBefore = itemService.findById(3L).get().getNumberInStock();
@@ -70,8 +70,8 @@ class UserTest {
 		int stockAfter = itemService.findById(3L).get().getNumberInStock();
 		assertEquals(stockBefore, stockAfter);
 	}
-	
-	@Test 
+
+	@Test
 	public void test_ThatATotalPriceCanBeCalculatedForTheBasket() {
 		User user = userService.findById(1L).get();
 		BigDecimal totalPriceBefore = user.getTotalPrice();

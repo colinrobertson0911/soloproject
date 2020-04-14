@@ -25,7 +25,7 @@ public class LoginController {
 	public String home() {
 		return "mainScreen.jsp";
 	}
-	
+
 	@GetMapping("Logout")
 	public String logout() {
 		return "mainScreen.jsp";
@@ -45,9 +45,8 @@ public class LoginController {
 		}
 		session.setAttribute(SESSION_ATTRIBUTE_USER, user);
 		userService.calculateTotalPrice(user);
-		ModelAndView modelAndView = new ModelAndView("WEB-INF/basket.jsp","user", user);
+		ModelAndView modelAndView = new ModelAndView("WEB-INF/basket.jsp", "user", user);
 		return modelAndView;
-		
 
 	}
 

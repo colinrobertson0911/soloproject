@@ -34,8 +34,8 @@ public class UserService {
 
 	public void buyBasket(User user) {
 		boolean purchase = true;
-		for(Item item : user.getBasket()) {
-			if(item.getNumberInStock() == 0) {
+		for (Item item : user.getBasket()) {
+			if (item.getNumberInStock() == 0) {
 				purchase = false;
 			}
 		}
@@ -57,9 +57,8 @@ public class UserService {
 		for (Item item : user.getBasket()) {
 			totalPrice = totalPrice.add(item.getPrice());
 		}
-		 user.setTotalPrice(totalPrice);
-		 save(user);
+		user.setTotalPrice(totalPrice);
+		save(user);
 	}
-		
 
 }

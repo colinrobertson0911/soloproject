@@ -14,7 +14,7 @@ import com.fdmgroup.soloProject_Colin_OneDay.service.UserService;
 
 @Controller
 public class UserController {
-	
+
 	@Autowired
 	UserService userService;
 
@@ -38,5 +38,4 @@ public class UserController {
 		return new ModelAndView("WEB-INF/basket.jsp", "user", user);
 	}
 
-	
 }

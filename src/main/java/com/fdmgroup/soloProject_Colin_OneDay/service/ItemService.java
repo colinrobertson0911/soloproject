@@ -26,5 +26,5 @@ public class ItemService {
 	public Optional<Item> findById(long itemId) {
 		return itemDao.findById(itemId);
 	}
-	
+
 }
