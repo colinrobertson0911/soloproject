@@ -10,7 +10,7 @@
 <body>
 	<h1>Purchase complete</h1>
 	<p>An order has been placed for the following items:</p>
-	<c:forEach items="${user.basket}" var="item">
+	<c:forEach items="${users.basket}" var="item">
 		<p>Name: ${item.name}</p>
 		<p>Description: ${item.description}</p>
 		<p>Price: &pound${item.price}</p>

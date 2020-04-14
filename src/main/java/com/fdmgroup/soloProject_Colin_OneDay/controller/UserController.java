@@ -24,7 +24,7 @@ public class UserController {
 		userService.buyBasket(user);
 		if (user.getBasket().isEmpty()) {
 			User userPurchase = (User) session.getAttribute("USER");
-			return new ModelAndView("WEB-INF/purchased.jsp", "user", userPurchase);
+			return new ModelAndView("WEB-INF/buyBasket.jsp", "user", userPurchase);
 		}
 		model.addAttribute("errorMessage", "One or more items is out of stock");
 		return new ModelAndView("WEB-INF/basket.jsp", "user", user);
