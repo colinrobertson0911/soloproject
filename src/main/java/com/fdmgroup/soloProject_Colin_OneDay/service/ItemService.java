@@ -14,9 +14,6 @@ public class ItemService {
 
 	@Autowired
 	ItemDao itemDao;
-	
-	@Autowired
-	UserService userService;
 
 	public List<Item> findAll() {
 		return itemDao.findAll();
@@ -29,11 +26,5 @@ public class ItemService {
 	public Optional<Item> findById(long itemId) {
 		return itemDao.findById(itemId);
 	}
-
-	public void chooseItem(String name) {
-		itemDao.chooseItem(name);
-	}
-
 	
-
 }
