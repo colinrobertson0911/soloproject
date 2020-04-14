@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity(name = "users")
 public class User {
 
@@ -26,6 +29,7 @@ public class User {
 	private String lastname;
 
 	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@JoinColumn(name = "itemId")
 	private List<Item> basket;
 

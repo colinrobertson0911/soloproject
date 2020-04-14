@@ -3,6 +3,7 @@ package com.fdmgroup.soloProject_Colin_OneDay;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -21,10 +22,10 @@ class UserTest {
 
 	@Autowired
 	UserService userService;
-	
+
 	@Autowired
 	ItemService itemService;
-	
+
 	@Test
 	public void test_ThatAUserCanBeCreated() {
 		int numberUsersBefore = userService.findAll().size();
@@ -35,21 +36,46 @@ class UserTest {
 		int numberUserAfter = userService.findAll().size();
 		assertNotEquals(numberUsersBefore, numberUserAfter);
 	}
-	
+
 	@Test
 	public void test_ThatAUserCanBeRetrieved() {
 		User user = userService.findById(1L).get();
 		assertEquals(1, user.getUserId());
 	}
-	
+
 	@Test
 	public void test_ThatAUsersBasketCanBeRetrieved() {
 		User user = userService.findById(1L).get();
 		List<Item> basket = itemService.findAll();
 		user.getBasket();
 		int numberOfItems = basket.size();
-		assert(numberOfItems > 0);
+		assert (numberOfItems > 0);
+	}
+
+	@Test
+	public void test_ThatAnItemCanBeBought_IfEnoughStockIsAvailable() {
+		int stockBefore = itemService.findById(1L).get().getNumberInStock();
+		User buyer = userService.findById(1L).get();
+		userService.buyBasket(buyer);
+		int stockAfter = itemService.findById(1L).get().getNumberInStock();
+		assertNotEquals(stockBefore, stockAfter);
+
 	}
 	
+	@Test
+	public void test_ThatAnItemCannotBeBought_IfNotEnoughStockAvailable() {
+		int stockBefore = itemService.findById(3L).get().getNumberInStock();
+		User buyer = userService.findById(2L).get();
+		userService.buyBasket(buyer);
+		int stockAfter = itemService.findById(3L).get().getNumberInStock();
+		assertEquals(stockBefore, stockAfter);
+	}
 	
+	@Test 
+	public void test_ThatATotalPriceCanBeCalculatedForTheBasket() {
+		User user = userService.findById(1L).get();
+		BigDecimal totalPrice = userService.calculateTotalPrice(user);
+		assertEquals(totalPrice, new BigDecimal("2.54"));
+	}
+
 }
