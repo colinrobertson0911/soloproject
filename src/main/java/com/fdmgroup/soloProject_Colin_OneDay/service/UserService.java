@@ -45,17 +45,20 @@ public class UserService {
 				itemService.save(item);
 			}
 
-			user.getBasket().removeAll(user.getBasket());
-			save(user);
+			user.getBasket().clear();
+			user.setTotalPrice(new BigDecimal("0.00"));
 		}
+		save(user);
+
 	}
 
-	public BigDecimal calculateTotalPrice(User user) {
+	public void calculateTotalPrice(User user) {
 		BigDecimal totalPrice = new BigDecimal("0.00");
 		for (Item item : user.getBasket()) {
 			totalPrice = totalPrice.add(item.getPrice());
 		}
-		return totalPrice;
+		 user.setTotalPrice(totalPrice);
+		 save(user);
 	}
 		
 

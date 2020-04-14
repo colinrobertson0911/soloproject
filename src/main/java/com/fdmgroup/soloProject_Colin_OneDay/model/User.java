@@ -1,5 +1,6 @@
 package com.fdmgroup.soloProject_Colin_OneDay.model;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -33,12 +34,8 @@ public class User {
 	@JoinColumn(name = "itemId")
 	private List<Item> basket;
 
-	public User(String firstname, String lastname, List<Item> basket) {
-		super();
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.basket = basket;
-	}
+	@Column
+	private BigDecimal totalPrice;
 
 	public User() {
 		super();
@@ -76,6 +73,14 @@ public class User {
 		this.basket = basket;
 	}
 
+	public BigDecimal getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(BigDecimal totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -83,6 +88,7 @@ public class User {
 		result = prime * result + ((basket == null) ? 0 : basket.hashCode());
 		result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
 		result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
+		result = prime * result + ((totalPrice == null) ? 0 : totalPrice.hashCode());
 		result = prime * result + (int) (userId ^ (userId >>> 32));
 		return result;
 	}
@@ -111,6 +117,11 @@ public class User {
 				return false;
 		} else if (!lastname.equals(other.lastname))
 			return false;
+		if (totalPrice == null) {
+			if (other.totalPrice != null)
+				return false;
+		} else if (!totalPrice.equals(other.totalPrice))
+			return false;
 		if (userId != other.userId)
 			return false;
 		return true;
@@ -119,7 +130,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", firstname=" + firstname + ", lastname=" + lastname + ", basket=" + basket
-				+ "]";
+				+ ", totalPrice=" + totalPrice + "]";
 	}
 
 }

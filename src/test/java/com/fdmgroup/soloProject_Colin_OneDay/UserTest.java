@@ -74,8 +74,10 @@ class UserTest {
 	@Test 
 	public void test_ThatATotalPriceCanBeCalculatedForTheBasket() {
 		User user = userService.findById(1L).get();
-		BigDecimal totalPrice = userService.calculateTotalPrice(user);
-		assertEquals(totalPrice, new BigDecimal("2.54"));
+		BigDecimal totalPriceBefore = user.getTotalPrice();
+		userService.calculateTotalPrice(user);
+		BigDecimal totalPriceAfter = userService.findById(1L).get().getTotalPrice();
+		assertNotEquals(totalPriceBefore, totalPriceAfter);
 	}
 
 }
