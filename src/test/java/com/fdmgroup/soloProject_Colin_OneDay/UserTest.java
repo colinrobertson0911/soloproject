@@ -1,4 +1,4 @@
-package com.fdmgroup.soloProject_Coli_OneDay;
+package com.fdmgroup.soloProject_Colin_OneDay;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;

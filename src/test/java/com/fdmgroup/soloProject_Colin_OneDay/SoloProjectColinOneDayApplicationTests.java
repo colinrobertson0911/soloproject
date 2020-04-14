@@ -1,10 +1,10 @@
-package com.fdmgroup.soloProject_Coli_OneDay;
+package com.fdmgroup.soloProject_Colin_OneDay;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SoloProjectColiOneDayApplicationTests {
+class SoloProjectColinOneDayApplicationTests {
 
 	@Test
 	void contextLoads() {
