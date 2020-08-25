@@ -30,7 +30,7 @@
 		</c:forEach>
 		
 		
-		<h3>Basket Total: £${users.totalPrice}</h3>
+		<h3>Basket Total: £${user.totalPrice}</h3>
 		<a href="BuyBasket?userId=${user.userId}">Purchase Basket</a>
 		
 			
